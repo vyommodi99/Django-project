@@ -1,0 +1,27 @@
+{%extends 'main.html'%}
+
+{% block content %}
+
+<body>
+    <hr>
+    <form method="POST" class="container">
+        {% csrf_token %}
+        <div class="form group">
+            <label for="username">Enter Username</label>
+            <input class="form-control" type="text" placeholder="Username" name="username">
+        </div><hr>
+        <div class="form group">
+            <label for="passwordq">Enter Password</label>
+            <input class="form-control" type="password" placeholder="Password" name="password">
+        </div>
+        <hr>
+        <button class="btn btn-outline btn-success" type="submit">Submit</button>
+        {% for message in messages %}
+			<p id="messages">{{message}}</p>
+		{% endfor %}
+        <div class="d-flex justify-content-center links">
+            Forgot password? <a href="{% url 'reset_password' %}" class="ml-2">Reset password</a>
+        </div>
+    </form>
+</body>
+{% endblock %}
